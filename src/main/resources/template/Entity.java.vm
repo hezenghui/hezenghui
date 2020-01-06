@@ -1,0 +1,33 @@
+package ${package};
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Data
+@EqualsAndHashCode(callSuper = true)
+@TableName("${tableName}")
+@Accessors(chain = true)
+public class ${className} extends Model<${className}> {
+private static final long serialVersionUID=1L;
+#foreach ($column in $columns)
+    /**
+    * $column.comments
+    */
+    #if($column.columnName == $pk.columnName)
+    @TableId
+    #end
+    @ApiModelProperty(value = "$column.comments", name = "$column.lowerAttrName", dataType = "$column.attrType")
+    private $column.attrType $column.lowerAttrName;
+#end
+
+}

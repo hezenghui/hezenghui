@@ -1,0 +1,19 @@
+package ${package}.${moduleName}.service.impl;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.govmade.gds.dna.api.entity.${className};
+import com.govmade.gds.dna.mapper.${className}Mapper;
+import com.govmade.gds.dna.service.${className}Service;
+import org.springframework.stereotype.Service;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Service
+@AllArgsConstructor
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
+
+}

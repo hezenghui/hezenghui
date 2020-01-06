@@ -1,0 +1,95 @@
+package ${package};
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.api.R;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.govmade.gds.common.core.util.R;
+import com.govmade.gds.dna.api.entity.${className};
+import com.govmade.gds.dna.service.${className}Service;
+import com.govmade.gds.common.log.annotation.SysLog;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Api(tags = "自行填写")
+@RestController
+@AllArgsConstructor
+@RequestMapping("/${pathName}")
+public class ${className}Controller {
+    private final ${className}Service ${classname}Service;
+
+    /**
+     * 简单分页查询
+     * @param page 分页对象
+     * @param ${classname} ${comments}
+     * @return 分页查询结果
+     */
+    @ApiOperation(value = "分页查询")
+    @GetMapping("/page")
+    //@PreAuthorize("@pms.hasPermission('模块_控制器_方法')")
+    public R get${className}Page(Page page, ${className} ${classname}) {
+        return R.ok(${classname}Service.page(page, Wrappers.query(${classname})));
+    }
+
+    /**
+     * 通过 ${pk.lowerAttrName}查询
+     * @param ${pk.lowerAttrName} ${pk.lowerAttrName}
+     * @return R
+     */
+    @ApiOperation(value = "根据${pk.lowerAttrName}获取信息")
+    @GetMapping("/{${pk.lowerAttrName}}")
+    @ApiImplicitParam(name = "${pk.lowerAttrName}", value = "参数注释，自行填写", required = true, dataType = "${pk.attrType}", example =
+            "参数默认值，自行填写")
+    //@PreAuthorize("@pms.hasPermission('模块_控制器_方法')")
+    public R<${className}> getById(@PathVariable("${pk.lowerAttrName}") ${pk.attrType} ${pk.lowerAttrName}) {
+        return R.ok(Optional.ofNullable(${classname}Service.getById(${pk.lowerAttrName})).orElse(new ${className}()),"获取信息成功");
+    }
+
+    /**
+     * 新增
+     * @param ${classname} ${className}
+     * @return R
+     */
+    @SysLog("自行填写")
+    @ApiOperation(value = "新增")
+    @PostMapping("/save")
+    //@PreAuthorize("@pms.hasPermission('模块_控制器_方法')")
+    public R<Boolean> save(@RequestBody ${className} ${classname}) {
+        return R.ok(${classname}Service.save(${classname}));
+    }
+
+    /**
+     * 修改
+     *
+     * @param ${classname} ${classname}
+     * @return R
+     */
+    @SysLog("自行填写")
+    @ApiOperation(value = "修改")
+    @PostMapping("/update")
+    //@PreAuthorize("@pms.hasPermission('模块_控制器_方法')")
+    public R<Boolean> update(@RequestBody ${className} ${classname}) {
+        return R.ok(${classname}Service.updateById(${classname}));
+    }
+
+    /**
+     * 根据${pk.lowerAttrName}删除
+     *
+     * @param ${pk.lowerAttrName}  ${pk.lowerAttrName}
+     * @return R
+     */
+    @SysLog("自行填写")
+    @ApiOperation(value = "根据${pk.lowerAttrName}删除")
+    @PostMapping("/delete/{${pk.lowerAttrName}}")
+    @ApiImplicitParam(name = "${pk.lowerAttrName}", value = "参数注释，自行填写", required = true, dataType = "${pk.attrType}", example =
+            "参数默认值，自行填写")
+    //@PreAuthorize("@pms.hasPermission('模块_控制器_方法')")
+    public R<Boolean> removeById(@PathVariable ${pk.attrType} ${pk.lowerAttrName}) {
+        return R.ok(${classname}Service.removeById(${pk.lowerAttrName}));
+    }
+}
