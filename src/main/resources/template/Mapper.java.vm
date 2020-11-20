@@ -1,0 +1,16 @@
+package ${package}.${moduleName}.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.govmade.gds.dna.api.entity.${className};
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @since ${datetime}
+ */
+@Mapper
+public interface ${className}Mapper extends BaseMapper<${className}> {
+
+}

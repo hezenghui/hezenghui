@@ -1,0 +1,25 @@
+package ${package};
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.api.R;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.govmade.gds.common.core.util.R;
+import com.govmade.gds.dna.api.entity.${className};
+import com.govmade.gds.dna.service.${className}Service;
+import com.govmade.gds.common.log.annotation.SysLog;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @since ${datetime}
+ */
+@Api(tags = "自行填写")
+@RestController
+@AllArgsConstructor
+@RequestMapping("/${pathName}")
+public class ${className}Controller {
+    private final ${className}Service ${classname}Service;
+}
